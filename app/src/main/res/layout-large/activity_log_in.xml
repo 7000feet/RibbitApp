@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mrapps.ribbit.ui.LogInActivity"
+    style="@style/AuthBackground">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        style="@style/AuthBackgroundImage"
+        android:contentDescription="@string/content_desc_background"
+    />
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/app_name"
+        android:layout_marginTop="180dp"
+        style="@style/AuthStyle"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:text="@string/subtitle"
+        style="@style/AuthSubTitle"/>
+
+    <LinearLayout
+        android:id="@+id/editTextLayout"
+        style="@style/AuthFieldContainer"
+        android:layout_width="400dp"
+        android:layout_centerHorizontal="true">
+
+         <EditText
+            android:id="@+id/usernameField"
+            android:hint="@string/username_hint"
+            style="@style/AuthEditText">
+            <requestFocus/>
+         </EditText>
+
+         <EditText
+            android:id="@+id/passwordField"
+            style="@style/AuthEditText"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:text="@string/loginButton_label"
+        android:layout_below="@+id/editTextLayout"
+        style="@style/AuthButton"
+        android:layout_width="400dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_up_text"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="12dp"
+        android:textColor="@android:color/white"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>
