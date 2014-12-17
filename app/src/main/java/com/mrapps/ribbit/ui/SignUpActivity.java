@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.mrapps.ribbit.R;
+import com.mrapps.ribbit.RibbitApplication;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -36,12 +37,12 @@ public class SignUpActivity extends Activity {
         mPassword = (EditText) findViewById(R.id.passwordField);
         mEmail = (EditText) findViewById(R.id.emailField);
 
-        mCancelButton = (Button)findViewById(R.id.cancelButton);
+        mCancelButton = (Button) findViewById(R.id.cancelButton);
 
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    finish();
+                finish();
             }
         });
 
@@ -55,7 +56,7 @@ public class SignUpActivity extends Activity {
                 username = username.trim();
                 password = password.trim();
                 email = email.trim();
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(R.string.signup_error_message).setTitle(R.string.signup_error_title).setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
@@ -68,15 +69,17 @@ public class SignUpActivity extends Activity {
                     newUser.setUsername(username);
                     newUser.setPassword(password);
                     newUser.setEmail(email);
-                    newUser.signUpInBackground(new SignUpCallback(){
+                    newUser.signUpInBackground(new SignUpCallback() {
                         @Override
-                        public void done(ParseException e){
+                        public void done(ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
-                            if (e == null){
+                            if (e == null) {
+                                RibbitApplication.updateParseInstallation(ParseUser.getCurrentUser());
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 //success
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                                 startActivity(intent);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
@@ -93,9 +96,6 @@ public class SignUpActivity extends Activity {
 
 
     }
-
-
-
 
 
 }

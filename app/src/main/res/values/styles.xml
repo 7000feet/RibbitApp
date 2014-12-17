@@ -25,6 +25,7 @@
         <item name="android:popupMenuStyle">@style/PopupMenu.Ribbit</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Ribbit</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Ribbit</item>
+        <item name="android:actionBarTabBarStyle">@style/ActionBarTabBarStyle.Ribbit</item>
         <item name="android:actionDropDownStyle">@style/DropDownNav.Ribbit</item>
         <item name="android:actionBarStyle">@style/ActionBar.Solid.Ribbit</item>
         <item name="android:actionModeBackground">@drawable/cab_background_top_ribbit</item>
@@ -33,12 +34,19 @@
         <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
         <item name="android:actionOverflowButtonStyle">@style/Theme.Ribbit.Overflow</item>
         <item name="android:listViewStyle">@style/Theme.Ribbit.LightPurpleBackground</item>
-        <item name="android:gridViewStyle">@style/Theme.Ribbit.LightPurpleBackground</item>
+        <item name="android:gridViewStyle">@style/Theme.Ribbit.LightPurpleBackground.GridView</item>
     </style>
 
+    <style name="ActionBarTabBarStyle.Ribbit" parent="@android:style/Widget.Holo.Light.ActionBar.TabBar">
+        <item name="android:gravity">center</item>
+    </style>
     <style name="Theme.Ribbit.LightPurpleBackground">
         <item name="android:background">@color/light_purple_background</item>
         <item name="android:divider">@null</item>
+    </style>
+
+    <style name="Theme.Ribbit.LightPurpleBackground.GridView">
+        <item name="android:padding">@dimen/user_grid_spacing</item>
     </style>
 
 
@@ -160,6 +168,14 @@
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
     </style>
 
+    <style name="GridImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
 
 
 </resources>

@@ -51,5 +51,8 @@
     <string name="cancel_button_label">CANCEL</string>
     <string name="content_desc_button_divider">Button Divider</string>
     <string name="content_message_icon">Message icon</string>
+    <string name="content_desc_user_avatar">User avatar</string>
+    <string name="content_desc_user_checkmark">User checkmark</string>
+    <string name="push_message">"You have a new Ribbit message from %s!"</string>
 
 </resources>

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mrapps.ribbit.R;
+import com.mrapps.ribbit.RibbitApplication;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -32,12 +33,12 @@ public class LogInActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.hide();
 
-        mSignUpTextView = (TextView)findViewById(R.id.signupText);
+        mSignUpTextView = (TextView) findViewById(R.id.signupText);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
-                        startActivity(intent);
+                startActivity(intent);
             }
         });
         mUsername = (EditText) findViewById(R.id.usernameField);
@@ -54,7 +55,7 @@ public class LogInActivity extends Activity {
                 username = username.trim();
                 password = password.trim();
 
-                if (username.isEmpty() || password.isEmpty()){
+                if (username.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LogInActivity.this);
                     builder.setMessage(R.string.login_error_message).setTitle(R.string.login_error_title).setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
@@ -68,10 +69,13 @@ public class LogInActivity extends Activity {
                             setProgressBarIndeterminateVisibility(false);
                             if (user != null) {
                                 // Hooray! The user is logged in.
+                                RibbitApplication.updateParseInstallation(user);
+
                                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                                 //success
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                                 startActivity(intent);
                             } else {
                                 // Signup failed. Look at the ParseException to see what happened.
@@ -88,7 +92,6 @@ public class LogInActivity extends Activity {
         });
 
     }
-
 
 
 }
